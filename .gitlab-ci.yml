@@ -1,13 +1,9 @@
-# main 브랜치에 push가 들어올 때 동작하는 job
-deploy:
-  only:
-    - main
-  before_script:
-    - "source /venv/bin/activate"
-    - "pip install -r requirements.txt"
-    - "pip flask db init"
-    - "pip flask db migrate"
-    - "pip flask db upgrade"
+image: python:3.8.10
 
+pages:
   script:
-    - "flask run"
+    - pip install --no-cache-dir -r requirements.txt
+    - FLASK_APP=crypto_homepage.py
+  artifacts:
+    paths:
+      - public
