@@ -1,9 +1,21 @@
 image: python:3.8.10
 
-pages:
+stages:
+  - Linux
+  - Heroku
+
+deploy-on-Linux:
+  stage: Linux
+
   script:
-    - pip install --no-cache-dir -r requirements.txt
+    - apt-get install -y python-dev python-pip
+    - vagrant up
+    - vagrant ssh
     - FLASK_APP=crypto_homepage.py
-  artifacts:
-    paths:
-      - public
+    - pip install -r requirements.txt
+
+deploy-on-Heroku:
+  stage: Heroku
+
+  script:
+    - Heroku
