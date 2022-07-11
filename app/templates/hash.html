@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf8">
+    <title>Hash</title>
+
+</head>
+
+<body>
+    <form action="/hash" method="post">
+        <input type="Write" name="msg"></input>
+        <button type="submit" name="submit" value="hash">crypt!</button>
+        {% if result %}
+        <p>결과: {{result}}</p>
+        {% endif %}
+    </form>
+</body>
+
+</html>
