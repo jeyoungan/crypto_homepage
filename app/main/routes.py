@@ -5,10 +5,11 @@ from flask_login import current_user, login_required
 from flask_babel import _, get_locale
 from langdetect import detect, LangDetectException
 from app import db
-from app.main.forms import EditProfileForm, EmptyForm, PostForm, SearchForm
+from app.main.forms import EditProfileForm, EmptyForm, PostForm, SearchForm, InputForm
 from app.models import User, Post
 from app.translate import translate
 from app.main import bp
+import hashlib
 
 
 @bp.before_app_request
@@ -62,6 +63,18 @@ def explore():
                            posts=posts.items, next_url=next_url,
                            prev_url=prev_url)
 
+
+@bp.route('/hash',methods=['GET','POST'])
+@login_required
+def hash():
+    msg = str(request.form.get('msg'))
+
+    return render_template("hash.html",title=_('Hash'),result=hash(msg))
+
+def hash(msg):
+    encoded_string = msg.encode()
+    result = hashlib.sha256(encoded_string).hexdigest()
+    return result
 
 @bp.route('/user/<username>')
 @login_required

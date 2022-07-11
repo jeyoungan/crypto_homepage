@@ -1,9 +1,10 @@
+from re import L
 from flask import request
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, TextAreaField
 from wtforms.validators import ValidationError, DataRequired, Length
 from flask_babel import _, lazy_gettext as _l
-from app.models import User
+
 
 
 class EditProfileForm(FlaskForm):
@@ -30,6 +31,11 @@ class EmptyForm(FlaskForm):
 class PostForm(FlaskForm):
     post = TextAreaField(_l('Say something'), validators=[DataRequired()])
     submit = SubmitField(_l('Submit'))
+
+class InputForm(FlaskForm):
+    post = TextAreaField(_l('Messages'), validators=[DataRequired()])
+    submit = SubmitField(_l('Submit'))
+
 
 
 class SearchForm(FlaskForm):
