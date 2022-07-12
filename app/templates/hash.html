@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html>
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
 
-<head>
-    <meta charset="utf8">
-    <title>Hash</title>
-
-</head>
+{% block app_content %}
+<meta charset="utf8">
+<title>Hash</title>
 
 <body>
     <form action="/hash" method="post">
@@ -17,4 +15,9 @@
     </form>
 </body>
 
-</html>
+{% if form %}
+{{ wtf.quick_form(form) }}
+<br>
+{% endif %}
+
+{% endblock %}
