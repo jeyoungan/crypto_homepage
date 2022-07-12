@@ -8,8 +8,9 @@
 <body>
     <form action="/hash" method="post">
         <input type="Write" name="msg"></input>
-        <button type="submit" name="submit" value="hash">crypt!</button>
+        <button type="submit" name="submit" value="hash">hash!</button>
         {% if result %}
+        <br>
         <p>결과: {{result}}</p>
         {% endif %}
     </form>
@@ -19,5 +20,4 @@
 {{ wtf.quick_form(form) }}
 <br>
 {% endif %}
-
 {% endblock %}

@@ -1,4 +1,4 @@
-from re import L
+from app.models import User
 from flask import request
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, TextAreaField
